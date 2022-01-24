@@ -26,4 +26,4 @@ Till din hjälp har du mappen ```src``` som innehåller en *html*, *.scss* samt 
 
 
 ## Inlämning
-Ditt projekt lämnas in via länk till *forkat* repo i classroom senast **måndag 7/2  kl 17.00**. Lektioner fram tills dess är det handledning.
+Ditt projekt lämnas in via länk till *forkat* repo i classroom senast **måndag 14/2  kl 17.00**. Lektioner fram tills dess är det *handledning*.
