@@ -3,64 +3,83 @@
 // Kolla ifall de är likadana (ge poäng & håll de uppvända vid korrekt, vänd ner ifall fel)
 // Kolla ifall brädet är tomt/alla par är hittade
 
-
-// TEST KORT
-// let img = document.querySelector('div img');
-// let div = document.querySelector('div')
-// div.addEventListener('click', changeOpacity);
-// function changeOpacity() {
-//     img.classList.toggle('opacity')
-// }
-
-let cards = [];
-let flippedCards = [];
+let tileMap = document.querySelector('main section');
+let types = [1,2,3,4,5,6,7,8,9,10,11,12];
+let tiles = []
+let flippedTiles = [];
 let counter = document.querySelector('main p');
+let moves = 0;
 
-for (let i = 0; i < cards.length; i++) {
-    cards[i].addEventListener("click", displayCard);
+for (let i = 0; i < types.length; i++) {
+    let tile = {
+        type: types[i],
+        img: `img/char-${types[i]}.png`
+    }
+    tiles.push(tile, tile);
 };
 
-function displayCard() {
+for(let i = 0; i < tiles.length; i++) {
+    let el = `<article><img src="${tiles[i].img}"></article>`
+    tileMap.insertAdjacentHTML('beforeend', el);
+};
+let backgrounds = document.querySelectorAll('main section > article');
+let img = document.querySelectorAll('main section article img');
+for (let i = 0; i < backgrounds.length; i++) {
+    backgrounds[i].addEventListener('click', (e) => {
+        displayTile(e.target);
+    })
+}
+
+function displayTile(element) {
     //flippa kortet och inte tillåta användaren att trycka det igen tills den är flippad tillbaka
+    element.parentNode.firstChild.classList.toggle('opacity');
+    flippedTiles.push(element.parentNode.firstChild);
+    element.parentNode.firstChild.style.pointerEvents = 'none';
+    checkTiles();
 }
 
 //shuffle array function
 
-let deck = document.querySelector('section');
+function checkTiles() {
+    
+    console.log(flippedTiles);
 
-function startGame() {
-    //call shuffle function with cards array
-
-    // FIXA DETTA
-    // /*shuffleArray*/.forEach(el => {
-        // deck.insertAdjacentHTML('afterbegin', el);
-    // })
-}
-
-function flipCard() {
-    flippedCards.push(this);
-
-    if (flippedCards.length === 2) {
+    if (flippedTiles.length === 2) {
         updateMoves();
 
-        if (flippedCards[0].type === flippedCards[1].type) {
-            match();
+        if (flippedTiles[0].getAttribute('src').split(/[-.]/)[1] === flippedTiles[1].getAttribute('src').split(/[-.]/)[1]) {
+            match(flippedTiles);
         } else {
-            noMatch();
+            noMatch(flippedTiles);
         }
     }
 }
 
-function match() {
+function match(elements) {
     //ta bort korten men inte HTML objektet för grid
+    elements.forEach(el => {
+        el.parentNode.classList.add('found');
+        el.classList.remove('opacity');
+    });
+    flippedTiles = []
+    gameOver();
 }
 
-function noMatch() {
+function noMatch(elements) {
     //vänd om kortet igen
+    elements.forEach(el => {
+        el.classList.toggle('opacity');
+    });
+    flippedTiles = [];
 }
-
 
 function updateMoves() {
     moves++;
     counter.innerText = `Antal drag: ${moves}`
+}
+
+function gameOver() {
+    //Kolla ifall alla articles har klassen "found"
+    //Ifall alla har de ändra något på skärmen
+    //Annars låt spelet fortsätta
 }

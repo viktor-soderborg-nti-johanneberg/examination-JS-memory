@@ -1,16 +1,101 @@
-body div img {
-  width: 10rem;
-  height: 10rem;
+main article img {
+  width: 5rem;
+  height: 5rem;
   opacity: 0;
+}
+
+main article {
+  background-color: black;
+  width: 5rem;
+  height: 5rem;
+  border: 2px solid #f5f3ea;
+}
+
+.found {
+  background-color: greenyellow;
 }
 
 .opacity {
   opacity: 1;
 }
 
-body div {
-  background-color: black;
-  width: 10rem;
-  height: 10rem;
+body {
+  margin: 0;
+  font-family: monospace;
+  background-color: #f5f3ea;
+  min-height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+h1 {
+  position: relative;
+  font-family: monospace;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  -webkit-transform: translateY(-3rem);
+          transform: translateY(-3rem);
+}
+
+h1::before,
+h1::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+h1::before {
+  background: #f5f3ea;
+  -webkit-animation: typewriter 3s steps(9) forwards;
+          animation: typewriter 3s steps(9) forwards;
+}
+
+main {
+  opacity: 0;
+  -webkit-transform: translateY(3rem);
+          transform: translateY(3rem);
+  -webkit-animation: fadeInUp 2s ease 3s forwards;
+          animation: fadeInUp 2s ease 3s forwards;
+}
+
+main section {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+}
+
+@-webkit-keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@-webkit-keyframes fadeInUp {
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
 }
 /*# sourceMappingURL=main.css.map */
