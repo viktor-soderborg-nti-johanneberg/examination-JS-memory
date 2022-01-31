@@ -18,30 +18,34 @@ main {
 
 main section {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 5rem);
+    gap: 2px;
 }
 
 main article {
     background-color: black;
     width: 5rem;
     height: 5rem;
-    border: 2px solid $background;
+
+    &.opacity {
+        img {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+    }
 }
 
 main article img {
+    transition: all 0.5s ease;
     opacity: 0;
     width: 5rem;
     height: 5rem;
-    border: 2px solid $background;
 }
 
 .found {
     background-color: greenyellow;
 }
 
-.opacity {
-    opacity: 1;
-}
 
 h1 {
     position: relative;

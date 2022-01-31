@@ -48,30 +48,33 @@ main {
 main section {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[6];
-      grid-template-columns: repeat(6, 1fr);
+  -ms-grid-columns: (5rem)[6];
+      grid-template-columns: repeat(6, 5rem);
+  gap: 2px;
 }
 
 main article {
   background-color: black;
   width: 5rem;
   height: 5rem;
-  border: 2px solid #f5f3ea;
+}
+
+main article.opacity img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  opacity: 1;
 }
 
 main article img {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
   opacity: 0;
   width: 5rem;
   height: 5rem;
-  border: 2px solid #f5f3ea;
 }
 
 .found {
   background-color: greenyellow;
-}
-
-.opacity {
-  opacity: 1;
 }
 
 h1 {
