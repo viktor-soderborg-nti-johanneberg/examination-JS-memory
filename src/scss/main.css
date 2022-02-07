@@ -120,6 +120,7 @@ button {
   border-radius: 2rem;
   text-transform: uppercase;
   font-family: monospace;
+  cursor: pointer;
 }
 
 *, html {
