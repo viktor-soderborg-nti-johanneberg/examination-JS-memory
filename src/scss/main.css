@@ -45,6 +45,10 @@ main {
           animation: fadeInUp 2s ease 3s forwards;
 }
 
+main img {
+  display: block;
+}
+
 main section {
   display: -ms-grid;
   display: grid;
